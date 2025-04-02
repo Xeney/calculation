@@ -1,0 +1,30 @@
+{{ template "header.html" .}}
+
+<style>
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 500px;
+    }
+    .user-login {
+        min-width: 350px;
+    }
+</style>
+
+<form class="user-login" method="post">
+    <div class="block">
+        <label for="login">Логин</label>
+        <input type="text" title="Введите здесь ваш логин" name="login" autocomplete="off" placeholder="Matvei-G16-Y" id="login" required>
+    </div>
+    <div class="block">
+        <label for="password">Пароль</label>
+        <input type="password" title="Введите здесь ваш пароль" name="password" autocomplete="off" placeholder="%*!asd#Ym!()$!@#ga(!@)" id="password" required>
+    </div>
+    <button class="but">Войти</button>
+    {{ if .error}}
+    <p style="color: red;">{{.error}}</p>
+    {{ end }}
+</form>
+
+{{ template "footer.html" .}}

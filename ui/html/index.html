@@ -1,0 +1,63 @@
+{{ template "header.html" .}}
+
+<style>
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 650px;
+    }
+    .user-login {
+        min-width: 350px;
+    }
+</style>
+
+<form class="user-login" method="post">
+    <div class="block">
+        <label for="name">Название</label>
+        <input type="text" title="Название" name="name" autocomplete="off" placeholder="Название(необязательно)" id="name">
+    </div>
+    <div class="block">
+        <label for="description">Описание</label>
+        <input type="text" title="Описание" name="description" autocomplete="off" placeholder="Описание(необязательно)" id="description">
+    </div>
+    <div class="block">
+        <label for="count-ticket-vip">Билеты VIP</label>
+        <input type="number" min="1" max="900000000000000000"title="Цена билетов" name="vip-price" autocomplete="off" placeholder="Цена билетов" id="count-ticket-vip" required>
+        <input type="number" min="1" max="900000000000000000" title="Количество билетов" name="count-ticket-vip" autocomplete="off" placeholder="Количество билетов" id="count-ticket-vip" required>
+    </div>
+    <div class="block">
+        <label for="count-ticket-standart">Билеты Standart</label>
+        <input type="number" min="1" max="900000000000000000"title="Цена билетов" name="standart-price" autocomplete="off" placeholder="Цена билетов" id="count-ticket-standart" required>
+        <input type="number" min="1" max="900000000000000000" title="Количество билетов" name="count-ticket-standart" autocomplete="off" placeholder="Количество билетов" id="count-ticket-standart" required>
+    </div>
+    <div class="block">
+        <label for="count-ticket-econom">Билеты Econom</label>
+        <input type="number" min="1" max="900000000000000000"title="Цена билетов" name="econom-price" autocomplete="off" placeholder="Цена билетов" id="count-ticket-econom" required>
+        <input type="number" min="1" max="900000000000000000" title="Количество билетов" name="count-ticket-econom" autocomplete="off" placeholder="Количество билетов" id="count-ticket-econom" required>
+    </div>
+    <div class="block">
+        <label for="minus-money">Себестоимость</label>
+        <input type="number" min="0" max="900000000000000000" title="Себестоимость" name="minus-money" autocomplete="off" placeholder="Себестоимость" id="minus-money" required>
+    </div>
+    <div class="block">
+        <label for="plus-money">Процент дохода</label>
+        <input type="number" min="0" max="900000000000000000" title="Доход в процентах" name="plus-money" autocomplete="off" placeholder="Доход в процентах" id="plus-money" required>
+    </div>
+    <div class="block check">
+        <label for="check-save">Сохранить в мои мероприятия</label>
+        <input type="checkbox" title="Сохранить в мои мероприятия" value="save" name="check-save" id="check-save">
+    </div>
+    <button class="but">Расчет</button>
+    {{ if .error}}
+    <p style="color: red;">{{.error}}</p>
+    {{ end }}
+    {{ if .oneTiket}}
+    <p class="result_price">Оптимальная стоимость 1 билета: {{.oneTiket}}</p>
+    <p class="result_price">Сумма с продажи всех билетов: {{.summAll}}</p>
+    <p class="result_price">Сумма дохода с процентов: {{.summPrc}}</p>
+    <p class="result_price">Чистая прибыль: {{.moneyUp}}</p>
+    {{ end }}
+</form>
+
+{{ template "footer.html" .}}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ .IP_ADDR }}/style.css">
+    <link rel="shortcut icon" href="{{ .IP_ADDR }}/icon-light.svg" type="image/x-icon">
+    <title>Calculation | Расчет стоимости билетов</title>
+</head>
+<body>
+    <div id="about" class="modal">
+        <div class="content">
+            <h2 class="title">Разработка приложения по расчету оптимальной стоимости билетов на мероприятие</h2>
+            <p class="description">Автор: Варламов Дамир Алексеевич</p>
+            <p class="description">Технологии: Go(Golang), SQLite, HTML & SCSS</p>
+            <p class="description">Веб-Фреймворк Gin(Джин)</p>
+            <a class="but" href="#">Закрыть</a>
+        </div>
+    </div>
+    <header class="header container">
+        <img width="200px" src="{{ .IP_ADDR }}/icon.svg" alt="logo">
+        <nav class="menu">
+            <a href="#about">О нас</a>
+            <a href="/">Главная</a>
+            {{ if .User }}
+            <a href="/lk">Личный кабинет</a>
+            <a href="/exit">Выйти</a>
+            {{else}}
+            <a href="/login">Войти</a>
+            {{end}}
+        </nav>
+    </header>
+    <main class="main container bottom">

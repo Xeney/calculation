@@ -1,0 +1,57 @@
+{{ template "header.html" .}}
+
+<div class="lk">
+    <div class="col1">
+        <div class="block-label-input">
+            <label for="secret1">Логин</label>
+            <input class="secret" id="secret1" type="password" value="{{.User.Login}}" disabled>
+        </div>
+        <div class="block-label-input">
+            <label for="secret2">Пароль</label>
+            <input class="secret" id="secret2" type="password" value="{{.User.Password}}" disabled>
+        </div>
+        <button class="secret-but" onclick="click_secret()">Показать мои данные</button>
+    </div>
+    <div class="col2">
+        <h2 class="title">Мои мероприятия</h2>
+        <div class="course">
+            {{ range .User.Events }}
+            <div class="block">
+                <p class="title">{{.Name}}</p>
+                <p>{{.Description}}</p>
+                <p> Билеты(VIP): {{.CountTicketVip}}<br>
+                    Билеты(Standart): {{.CountTicketStandart}}<br>
+                    Билеты(Econom): {{.CountTicketEconom}}<br>
+                    Прибыль: {{.NetProfit}}%<br>
+                    Расходы: {{.Expenses}}</p>
+                <div class="two-block">
+                    <a class="but" href="/result/{{.Name}}">Расчет</a>
+                    <form method="post">
+                        <input type="hidden" name="name" value="{{.Name}}">
+                        <button class="but">Удалить</button>
+                    </form>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>
+
+<script>
+    let yupy = document.querySelectorAll(".secret")
+
+    function click_secret() {
+        if (yupy[0].type == "text") {
+            yupy.forEach(function(item, i, yupy) {
+                item.type = "password"
+            });
+        } else {
+            yupy.forEach(function(item, i, yupy) {
+                item.type = "text"
+            });
+        }
+    }
+</script>
+
+{{ template "footer.html" .}}
+

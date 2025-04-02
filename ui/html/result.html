@@ -1,0 +1,34 @@
+{{ template "header.html" .}}
+
+<style>
+    .result {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        max-width: 600px;
+        min-height: 300px;
+        background-color: #181823;
+        color: #EEEEEE;
+        padding: 20px 40px;
+        border-radius: 20px;
+        margin: 40px auto;
+    }
+    .result_price {
+        color: white;
+        font-size: 25px;
+    }
+    .but {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="result">
+    <p class="result_price">Оптимальная стоимость 1 билета: {{.oneTiket}}</p>
+    <p class="result_price">Сумма с продажи всех билетов: {{.summAll}}</p>
+    <p class="result_price">Сумма дохода с процентов: {{.summPrc}}</p>
+    <p class="result_price">Чистая прибыль: {{.moneyUp}}</p>    
+    <a class="but" href="/lk">Вернуться в личный кабинет</a>
+</div>
+
+{{ template "footer.html" .}}
