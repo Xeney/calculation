@@ -1,3 +1,5 @@
+Логин: admin
+Пароль: admin
 
 <img src="/Скрины/Снимок экрана1.png" alt="Интерфейс" width="500" height="300">
 <img src="/Скрины/Снимок экрана2.png" alt="Интерфейс" width="500" height="300">
